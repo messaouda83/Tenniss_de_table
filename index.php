@@ -35,7 +35,7 @@ $pts_j2 = $set->nbr_pts_joueur2= rand(5,13);
 //Affichage 
 echo "<p>".$joueur1->nom." : ".$pts_j1."</p>";
 echo "<p>".$joueur2->nom. " : " .$pts_j2."</p>";
-echo  "<p>".$set->calculSet()."</p>" ;
+var_dump($set->calculSet($pts_j1, $pts_j2)) ;
 
 ?> 
   <div class="container" style="border: 1px solid grey">
