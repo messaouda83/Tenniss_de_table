@@ -8,23 +8,23 @@ class Joueur {
     private $prenom;
 
     public function __construct($id, string $nom, string $prenom){
-      $this->id= $id;
-      $this->nom= $nom;
-      $this->prenom=$prenom;
+      $this->id = $id;
+      $this->nom = $nom;
+      $this->prenom =$prenom;
 
     }
 
-    public function id() 
+    public function getId() 
     { 
         return $this->id; 
     } 
-    public function nom(): string
+    public function getNom(): string
     {
         return $this->nom;
     }
 
 
-    public function prenom() : string  
+    public function getPrenom() : string  
     { 
         return $this->prenom; 
     } 
