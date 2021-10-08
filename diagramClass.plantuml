@@ -1,0 +1,83 @@
+@startuml
+
+hide circle
+left to right direction 
+' Déclaration de classes
+
+class Joueur
+ {
+    num_joueur : text {key}
+    Nom_joueur : string
+    Prenom_joueur : string
+    capitaine: string
+ }
+
+class Classement
+  {
+    Num_classement : integer
+    Num_saison : integer
+  }
+class Rencontre 
+  {
+  score :array;
+  }
+class RencontreSimple
+  {
+
+  }
+
+class RencontreDouble
+  {
+
+  }
+class Equipe 
+  {
+    CodEquipe : string {key}
+    NomEquipe : string
+  }
+
+class Match
+{
+'la date du match et la ville ou se déroule
+  Date  : date 
+  Ville : string
+}
+
+class MatchSimple
+  {
+
+  }
+
+class MatchDouble
+  {
+
+  }
+
+  class Arbitre 
+{
+  Id_arbitre: integer {key}
+  Nom_arbitre : string
+  Prenom_arbitre : string
+} 
+
+class Set 
+{
+  Num_set : integer {key}
+}
+' Déclaration des relations entre différentes classes
+
+Joueur "1"--"1" Classement: Avoir
+Joueur "1..*" -- "1" Equipe: Appartenir
+Joueur "1" -- "*" Rencontre: Jouer
+Joueur "1" -- "*" Set :Gagner
+Equipe "1" -- "*" Match : Participer
+Match "1" -- "*" Set: Avoir
+Equipe "1" -- "0..*" Match : Gagner
+Equipe "1" -- "0..*" Set : Gagner
+Match <|-- MatchSimple
+Match <|-- MatchDouble
+Rencontre <|-- RencontreSimple
+Rencontre <|-- RencontreDouble
+Arbitre "1" -- "*" Rencontre : Gérer
+
+@enduml
