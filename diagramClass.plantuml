@@ -1,15 +1,15 @@
 @startuml
 
-hide circle
+'hide circle
 left to right direction 
 ' Déclaration de classes
 
 class Joueur
  {
-    num_joueur : text {key}
+    num_joueur : string {key}
     Nom_joueur : string
     Prenom_joueur : string
-    capitaine: string
+    capitaine: bool
  }
 
 class Classement
@@ -42,17 +42,6 @@ class Match
   Date  : date 
   Ville : string
 }
-
-class MatchSimple
-  {
-
-  }
-
-class MatchDouble
-  {
-
-  }
-
   class Arbitre 
 {
   Id_arbitre: integer {key}
@@ -67,15 +56,14 @@ class Set
 ' Déclaration des relations entre différentes classes
 
 Joueur "1"--"1" Classement: Avoir
-Joueur "1..*" -- "1" Equipe: Appartenir
 Joueur "1" -- "*" Rencontre: Jouer
 Joueur "1" -- "*" Set :Gagner
 Equipe "1" -- "*" Match : Participer
 Match "1" -- "*" Set: Avoir
+Equipe "1" o-- "1..*" Joueur: Appartenir
 Equipe "1" -- "0..*" Match : Gagner
 Equipe "1" -- "0..*" Set : Gagner
-Match <|-- MatchSimple
-Match <|-- MatchDouble
+Rencontre "1" --"*" Set : Avoir
 Rencontre <|-- RencontreSimple
 Rencontre <|-- RencontreDouble
 Arbitre "1" -- "*" Rencontre : Gérer
